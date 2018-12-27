@@ -1,0 +1,50 @@
+{
+    "name": "msbios/content-article-doctrine",
+    "description": "MSBios Content Article Doctrine",
+    "license": "MIT",
+    "keywords": [
+        "php"
+    ],
+    "homepage": "https://github.com/msbios/msbios-content-article-doctrine",
+    "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "Judzhin Miles",
+            "email": "info@msbios.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "MSBios\\Content\\Article\\Doctrine\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MSBiosTest\\Content\\Article\\Doctrine\\": "tests/"
+        }
+    },
+    "require": {
+        "msbios/doctrine": "^1.0"
+    },
+    "require-dev": {
+        "msbios/debug": "^1.0",
+        "msbios/test": "^1.0"
+    },
+    "scripts": {
+        "cs-check": "phpcs",
+        "cs-fix": "phpcbf",
+        "test": [
+            "@cs-check",
+            "phpunit --colors=always"
+        ],
+        "test-coverage": "phpunit --colors=always --coverage-clover clover.xml",
+        "upload-coverage": "coveralls -v",
+        "alter": "./vendor/bin/doctrine-module orm:schema-tool:update --force",
+        "serve": "php -S 0.0.0.0:3107 -t public public/index.php"
+    },
+    "extra": {
+        "zf": {
+            "component": "MSBios\\Content\\Article\\Doctrine"
+        }
+    }
+}
